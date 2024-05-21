@@ -106,10 +106,6 @@ Feel free to fork this project and submit pull requests. For major changes, plea
 
 This project is licensed under the MIT License.
 
-## 📞 Contact
-
-For any inquiries, please contact [your-email@example.com](mailto:your-email@example.com).
-
 ---
 
 Happy coding! 😊
