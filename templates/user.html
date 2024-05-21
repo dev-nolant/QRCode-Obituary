@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+  </head>
+  <body onload="openTab(event, 'About')">
+    <header>
+      <div class="logo">
+        <img src="static/logo.jpeg" alt="Logo" class="logo-mobile">
+        <img src="static/logo-desktop.jpeg" alt="Logo" class="logo-desktop">
+      </div>
+      <!-- Buttons are now inside the header -->
+      <div class="header-buttons">
+        <button type="button" id="edit-button" title="Editar perfil"></button>
+        <button type="button" id="share-button" title="Compartir"></button>
+      </div>
+    </header>
+    <div class="container">
+      <div class="user-profile-section">
+        <div class="user-profile" style="background-image: url('{{ url_for('static', filename=user.background_image) }}'); width: 100%;">
+          <!-- User Image -->
+          <div class="user-image-container">
+            <img src="{{ url_for('static', filename=user.image_file) }}" alt="User Image" class="user-image" />
+            <img src="https://cdn1.iconfinder.com/data/icons/mobile-device/512/pen-tool-pencil-edit-instrument-blue-round-512.png" alt="Edit Image" id="edit-profile-image-button" class="edit-image-button editable-section" />
+            <form id="profile-image-upload-form" method="post" enctype="multipart/form-data" style="display: none;">
+              <input type="file" id="profile-image-input" name="profile_image" accept="image/*" />
+              <input type="hidden" name="uid" value="{{ user.uid }}" />
+            </form>
+          </div>
+          
+          <!-- User Details -->
+          <div class="user-details">
+            <p style="margin-top:10px" class="user-name"><h5>En Memoria de</h5>{{ user.name }}</p>
+            <p class="user-age">{{ user.birthday }} - {{ user.death_date }}</p>
+          </div>
+          <form id="background-image-upload-form" method="post" enctype="multipart/form-data">
+            <!-- Your form fields go here -->
+            <input type="file" id="background-image-input" name="background_image" style="display: none;">
+            <input type="hidden" name="uid" value="{{ user.uid }}">
+          </form>
+          <div class="upload-bg-button editable-section">
+            <button id="upload-bg-button" class="your-button-class">Foto de Portada</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="profile-tab-spacer"></div>
+      <form class="admin-section" id="user-section" method="POST">
+        <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'About') ">
+            Biografía
+          </button>
+          <button class="tablinks" onclick="openTab(event, 'Images')">
+            Imágenes
+          </button>
+          <button class="tablinks" onclick="openTab(event, 'Videos')">
+            Vídeos
+          </button>
+          <button class="tablinks" onclick="openTab(event, 'Details')">
+            Detalles
+          </button>
+          <input type="hidden" id="password" name="password" />
+        </div>
+
+        <div class="container">
+          <!-- ... -->
+          <form class="admin-section" id="user-section" method="POST">
+            <!-- ... -->
+            <div id="About" class="tabcontent">
+              <h3>Biografía</h3>
+              <div class="editable">
+                <textarea id="user-bio" name="bio" class="editable">{{ user.bio }}</textarea>
+                <span id="bio-char-count" style="display: none; position: absolute; bottom: 5px; right: 5px;"></span>
+              </div>
+              <div id="name-section" class="editable-section">
+                <label for="user-name">Nombre:</label>
+                <input type="text" id="user-name" name="user-name" value="{{ user.name }}">
+              </div>
+              <button
+                type="button"
+                id="bio-apply-button"
+                onclick="saveBio(); saveDetails(); saveName(); enableEditing(); saveAge(); setTimeout(refresh, 1000);"
+                style="display: none; margin-top: 5px; visibility: hidden"
+              >
+              Aplicar
+              </button>
+              <div id="birthday-section" class="editable-section">
+                <label for="user-birthday">Fecha de Nacimiento:</label>
+                <input type="date" id="user-birthday" name="user-birthday">
+              </div>
+              
+              <div id="deathday-section" class="editable-section">
+                <label for="user-deathday">Fecha de Defunción:</label>
+                <input type="date" id="user-deathday" name="user-deathday">
+              </div>
+              
+              <button
+                type="button"
+                id="age-apply-button"
+                onclick="saveBio(); saveDetails(); saveName(); enableEditing(); saveAge(); setTimeout(refresh, 1000);"
+                style="display: none"
+              >
+                Aplicar
+              </button>
+            </div>
+            <!-- ... -->
+          </form>
+        </div>
+
+        <div id="Images" class="tabcontent">
+          <div class="image-container" id="user-images">
+            <!-- User images will be inserted here -->
+          </div>
+          <form id="image-upload-form" method="post" enctype="multipart/form-data">
+            <input type="text" id="image-title" name="title" placeholder="Título" required />
+            <textarea id="image-description" name="description" placeholder="Descripción" required></textarea>
+            <input type="file" id="image-input" name="image" accept="image/*" required />
+            <input type="hidden" name="uid" value="{{ user.uid }}" />
+            <button id="publicar-button" type="submit">Publicar Imagen</button>
+            <button
+      type="button"
+      id="images-apply-button"
+      onclick="saveBio(); saveDetails(); saveName(); enableEditing(); saveAge(); setTimeout(refresh, 1000);"
+      style="display: inline-block; margin-left: 10px;"
+    >
+      Aplicar
+    </button>
+          </form>
+
+        </div>
+
+        <div id="Videos" class="tabcontent">
+
+          <div
+            class="youtube-container video-grid"
+            id="user-videos"
+            style="overflow: hidden; padding-bottom: 50px"
+          >
+            <!-- Existing videos will be inserted here -->
+          </div>
+          <form id="video-upload-form" method="post">
+            <input type="text" name="title" placeholder="Título" required />
+            <textarea
+              name="description"
+              placeholder="Descripción"
+              required
+            ></textarea>
+            <input
+              type="text"
+              name="link"
+              placeholder="YouTube Link"
+              required
+            />
+            <input type="hidden" name="uid" value="{{ user.uid }}" />
+            <div class="button-container">
+              <button type="submit">Añadir video</button>
+              <button
+                type="button"
+                id="video-apply-button"
+                onclick="saveBio(); saveDetails(); saveName(); enableEditing(); saveAge(); setTimeout(refresh, 1000);"
+                style="display: none"
+              >
+              Aplicar
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div id="Details" class="tabcontent">
+          <h3>Información del Cementerio</h3>
+        
+          <div class="">
+            <label for="cemetery-name">Nombre del Cementerio:</label>
+            <input type="text" id="cemetery-name" name="cemetery-name" class="editable" value="{{ user.details}}">
+          </div>
+        
+          <div class="">
+            <label for="cemetery-address">Direccíon del Cementerio:</label>
+            <input type="text" id="cemetery-address" name="cemetery-address" class="editable" value="{{ user.details['cemeteryAddress'] }}">
+          </div>
+        
+          <div class="">
+            <label for="google-maps-link">Link de Google Maps:</label>
+            <input type="text" id="google-maps-link" name="google-maps-link" class="editable" value="{{ user.details.googleMapsLink }}">
+          </div>
+        
+          <button type="button" id="details-apply-button" onclick="saveBio();saveDetails(); enableEditing(); " style="display: none">
+            Aplicar
+          </button>
+        </div>
+
+    <div id="passwordModal" class="modal">
+      <div class="modal-content">
+        <span onclick="closeModal()">&times;</span>
+        <label for="passwordInput">Contraseña:</label>
+        <input type="password" id="passwordInput" name="passwordInput" />
+        <button type="button" onclick="submitForm()">Acceder</button>
+      </div>
+    </div>
+  </body>
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</html>

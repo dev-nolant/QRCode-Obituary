@@ -1,0 +1,9 @@
+Flask
+Flask-SQLAlchemy
+Flask-WTF
+WTForms
+Flask-Uploads
+Werkzeug
+urllib3
+python-dotenv
+qrcode

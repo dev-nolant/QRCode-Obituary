@@ -1,0 +1,940 @@
+body {
+  padding-top: 120px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #eff2f6;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+.container {
+  width: 100%; /* Full width */
+  margin: 0; /* No side margins */
+  padding: 0; /* No side padding */
+  padding-bottom: 30px;
+  box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+.admin-section {
+  background: #eff2f6; /* Off color set to grey */
+  margin-bottom: -49px;
+  margin-left: 12%;
+  padding: 20px;
+  border-radius: 5px;
+  width: 75%; /* Set the width to match the parent container */
+  box-sizing: border-box; /* Include padding in the width calculation */
+  height: auto;
+  overflow: visible;
+
+}
+
+
+label {
+  display: block;
+  margin: 10px 0;
+}
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+button {
+  padding: 10px 20px;
+  background: #7092BE; /* Main color set to #7092BE */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #555; /* Change this color as needed */
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+#passwordModal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#passwordModal .modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal-content {
+  width: 90%;
+  max-width: 400px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin: 15% auto;
+}
+.modal-content span {
+  cursor: pointer;
+}
+.modal-content label {
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+}
+.user-details h5 {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+.user-details .user-name {
+  margin-top: 0; /* Adjust or remove the top margin */
+  padding-top: 0; /* Adjust or remove the top padding */
+}
+.modal-content input[type="password"],
+.modal-content button {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 9px #999;
+  display: block;
+  margin-top: 10px;
+}
+.user-image {
+  width: 200px; /* Adjust as needed */
+  height: 200px; /* Adjust as needed */
+  border-radius: 50%; /* Makes the image round */
+  background-color: white;
+}
+
+.youtube-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust the minmax values as needed */
+  grid-gap: 10px;
+  max-height: 100%;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+@media screen and (max-width: 768px) {
+  .youtube-container {
+    overflow: hidden;
+    grid-template-columns: 1fr; /* One column on mobile */
+  }
+  
+}
+
+.youtube-video {
+  flex: 0 0 50%;
+  padding: 10px;
+}
+
+.youtube-link iframe {
+  width: 100%;
+  height: 450px;
+}
+
+.tab {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #ccc;
+  background-color: white; /* Main color set to #7092BE */
+}
+
+.tab button {
+  background-color: white;
+  float: none; /* Remove float to allow centering */
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 20px;
+  transition: 0.3s;
+  position: relative; /* Add relative positioning for the underline */
+  color: grey; /* Change the text color to black */
+  font-weight: bold;
+}
+
+
+.tab button:hover {
+  color: #7092BE;
+  background-color: white; /* Keep the background color white on hover */
+}
+
+.tab button.active {
+  background-color: white; /* Keep the background color white when active */
+  color: #7092BE; /* Change the text color to blue when active */
+}
+
+.tab button.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px; /* Adjust the height of the line as needed */
+  background-color: #7092BE; /* Change the line color to blue */
+}
+
+.tabcontent {
+  display: block;
+  padding-left: 0; /* Reset left padding */
+  margin-left: 0; 
+  padding: 6px 16px;
+  background-color: white; /* Set the background color to white */
+  border-bottom-left-radius: 15px; /* Rounded bottom-left corner */
+  border-bottom-right-radius: 15px;
+  border-top: none;
+  animation: fadeIn .25s ease-in-out forwards;
+  opacity: 0;
+  height: auto;
+  overflow-y: visible;
+}
+#About .editable {
+  margin-left: 0 !important; /* Force no left margin */
+  padding-left: 0 !important; /* Force no left padding */
+  padding: 6px 12px;
+  user-select: text;
+}
+
+.tabcontent.active {
+  display: block;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.editable {
+  display: block;
+  position: relative;
+  background-color: white;
+  padding: 10px;
+  border-radius: 15px;
+  max-width: none;
+  width: 100%;
+  word-wrap: break-word;
+  min-height: 50px;
+  z-index: 1;
+  margin-left: 0; /* Reset left margin */
+  padding-left: 0;
+  border-radius: 5px;
+  text-align: left;
+}
+#user-bio {
+  width: 100%;
+  margin: 0;
+  height: auto;
+  padding: 10px;
+  box-sizing: border-box;
+  display: block;
+  border: none; /* Remove border */
+  resize: none; /* Disable resizing */
+}
+
+
+.editable::after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+}
+.editable:hover::after {
+  display: block;
+}
+.editable.editing::after {
+  display: none;
+}
+.editable.editing::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.13);
+  
+}
+.incorrect-password {
+  border-color: red;
+}
+
+.header .buttons {
+  display: flex; /* Align buttons in a row */
+  align-items: center; /* Center buttons vertically */
+  gap: 10px; /* Space between buttons */
+}
+
+
+.user-profile {
+
+  background-repeat: no-repeat;
+  background-size: cover; /* This will cover the full area of the element */
+  background-position: center; /* This will center the background image */
+  width: 100vw; /* This will make the element take the full width of the viewport */
+  height: 300px; /* Adjust the height as needed */
+  margin: 0; /* Ensure no margins are affecting the element */
+  margin-top: 124px;
+  padding-top: 100px;
+  padding-bottom: 60px;
+  box-sizing: border-box; /* Include padding and border in the element's total width */
+  position: relative;
+  border-top-left-radius: 10px; /* Rounds the top left corner */
+  border-top-right-radius: 10px;
+  
+}
+.user-profile .user-image {
+  margin-right: 20px;
+}
+
+.user-profile .user-bio {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 5px;
+}
+.user-profile .buttons {
+  display: flex;
+  gap: 10px;
+}
+.editable h3 {
+  margin-top: 0; /* Remove top margin if any */
+  margin-bottom: 10px; /* Add some space between the heading and the text box */
+  text-align: left; /* Align the heading to the left */
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 90px; /* Adjust this value as needed */
+  background-color: #fff;
+  padding: 10px 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.logo img {
+  height: 90px !important;
+
+}
+.logo .logo-mobile {
+  display: none; /* Hide the mobile logo by default */
+}
+
+.logo .logo-desktop {
+  display: block; /* Show the desktop logo by default */
+}
+
+@media screen and (max-width: 767px) {
+  .logo .logo-mobile {
+    display: block; /* Show the mobile logo on small screens */
+  }
+
+  .logo .logo-desktop {
+    display: none; /* Hide the desktop logo on small screens */
+  }
+}
+
+.logo img {
+  height: 60px; /* Adjust as needed */
+}
+.buttons {
+  position: absolute;
+  display: flex; /* Aligns the buttons horizontally */
+  align-items: center;
+  right: 20px;
+  bottom: -75px;  /* Adjust this value to move the buttons below the background */
+  z-index: 2; /* Ensure the buttons are above the background */
+}
+@media (max-width: 600px) {
+  .user-profile {
+    background-size: cover;
+    top: 90px; /* This should be equal to or greater than the height of the header */
+    position: relative;
+    background-position: center; /* Center the background image */
+    width: 100%; /* Full width */
+    margin-top: 30px;
+    margin-left: 0; /* No side margins */
+    padding-left: 0; /* No side padding */
+    padding-right: 0; /* No side padding */
+  }
+
+  .buttons button {
+    height: auto; /* Allow the content to determine the height */
+    padding: 15px; /* Increase padding to ensure buttons are not cut off */
+  }
+
+  .user-profile .buttons {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; /* Full width to prevent cut off */
+    justify-content: center; /* Center buttons horizontally */
+    gap: 10px; /* Space between buttons */
+  }
+
+  .container, .admin-section {
+   
+    width: 100%; /* Full width */
+    margin: 0; /* No margins */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+  }
+  
+
+  .user-details, .user-image-container {
+    position: relative; /* Adjust position to be relative within the user profile */
+    
+    left: 0; /* Align to the left edge */
+    transform: none; /* Remove any transforms */
+    text-align: center; /* Center the text */
+    margin-top: 20px; /* Add some space above the user details */
+  }
+
+  .user-image-container {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    bottom: auto; /* Remove the bottom positioning */
+  }
+
+  .user-image {
+    margin: 0 auto; /* Center the image */
+  }
+}
+
+
+.buttons button {
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-size: cover;
+  mix-blend-mode: multiply;
+}
+.user-profile .buttons button {
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-size: cover;
+  mix-blend-mode: multiply;
+
+}
+
+.user-info {
+  position: relative;
+  padding-top: 100px; /* Adjust this value to move the name and date range below the user image */
+  z-index: 2; /* Ensure the text is above the user image */
+}
+
+
+.user-details {
+  background-color: #FFFFFF;
+  width: 100%;
+  position: absolute;
+  bottom: -100px; /* Adjust this value to move the details below the background */
+  left: 0; /* Start from the very left edge of the page */
+  text-align: left;
+  z-index: -1; /* Ensure the text is above the background but below the image */
+  padding-left: 240px; /* Adjust this value to match the width of the user image plus any desired margin */
+  border-radius: 10px; /* Rounds the corners. Adjust as needed */
+}
+.user-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333; /* Adjust color as needed */
+}
+
+.user-age {
+  font-size: 16px;
+}
+      
+
+.user-image-container {
+  position: absolute;
+  bottom: -100px; /* Adjust this value to move the image below the background */
+  left: 20px;
+  z-index: 3; /* Ensure the image is above the other elements */
+  display: inline-block;
+}
+.unselectable {
+  user-select: none;
+}
+.image-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  justify-content: center;
+  grid-gap: 20px;
+  padding: 0; /* Remove padding if it's affecting the width */
+  width: 100%; /* Take the full width of the parent */
+  box-sizing: border-box;
+}
+.image-item img {
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+#Images {
+  width: calc(75% - 40px); /* Adjust the width by subtracting the total horizontal padding */
+  margin-left: 12%; /* Match the left margin of the .admin-section */
+  padding: 20px; /* Keep the padding consistent with the .admin-section */
+  box-sizing: border-box; /* Padding is included in the width */
+  background: #ffffff; /* Match the background color of the .admin-section */
+
+}
+#Images.tabcontent {
+  width: calc(75% - 40px);
+  margin-left: 13%; /* Match the left margin of the .admin-section */
+  /* Other properties as needed */
+}
+
+@media screen and (max-width: 768px) {
+  #Images {
+    width: calc(100% - 20px); /* Match the width of the tab bar, assuming the tab bar has 10px padding on each side */
+    margin-left: auto; /* Center align */
+    margin-right: auto; /* Center align */
+    padding: 10px; /* Match the padding of the tab bar if it has padding */
+    box-sizing: border-box; /* Include padding in the width calculation */
+  }
+
+  .image-container {
+    padding: 0; /* Remove padding if it's affecting the width */
+    grid-gap: 0; /* Remove grid gap if it's affecting the width */
+    /* Other styles as needed */
+  }
+
+  /* Additional adjustments for other elements inside #Images may be necessary */
+}
+.image-item {
+  width: 200px; /* Set a fixed width for the image container */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px; /* Set a minimum height */
+  margin: 0 auto;
+}
+.image-item h3, .image-item p {
+  padding: 0 10px;
+  margin: 0; /* Remove default margins */
+}
+
+.image-item h3 {
+  padding-top: 10px; /* Add padding at the top of the title */
+  font-size: 18px;
+}
+
+.image-item p {
+  padding-bottom: 10px; /* Add padding at the bottom of the description */
+  font-size: 14px;
+  flex-grow: 1; /* Allow the description to grow and push the padding down */
+}
+/* Styles for desktop */
+@media screen and (min-width: 768px) {
+  .image-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+  }
+}
+
+/* Styles for mobile */
+@media screen and (max-width: 767px) {
+
+.profile-tab-spacer {
+  margin-top: 45px
+}
+.user-age {
+  white-space: pre-wrap; /* Allows the text to wrap */
+  overflow: visible; /* Ensures that the text is not clipped */
+  text-overflow: unset; /* Default behavior for text overflow */
+  font-size: 16px; /* Adjust font size as needed */
+}
+
+}
+@media screen and (min-width: 1200px) {
+  .image-container {
+    grid-template-columns: repeat(5, 1fr); /* 5 images per row for larger screens */
+  }
+}
+/* Ensure the eliminar button is clickable */
+.eliminar-button {
+position: relative; /* Position relative to the image item */
+z-index: 10; /* Ensure it's above other elements */
+cursor: pointer; /* Change cursor to pointer on hover */
+margin-top: 10px; /* Space from the image or text above */
+}
+.user-profile {
+  padding-top: 0px;
+}
+.header {
+  margin-bottom: 0; /* Set to 0 or adjust as needed */
+  /* Other styling as needed */
+}
+#user-images img {
+  max-width: 100%;
+  height: auto;
+}
+
+#edit-button,
+#share-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  margin-left: 10px; /* Add space between buttons */
+}
+#edit-button {
+  background: url('https://cdn-icons-png.flaticon.com/512/84/84380.png') no-repeat center;
+  background-size: cover; /* Ensure the image covers the button */
+}
+#share-button {
+  background: url('https://www.shareicon.net/data/512x512/2015/10/18/657809_arrows_512x512.png') no-repeat center;
+  background-size: cover; /* Ensure the image covers the button */
+}
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 videos per row */
+  grid-gap: 20px;
+  margin-bottom: 20px;
+  max-height: calc(56.25% * 5); /* 5 rows, considering 16:9 aspect ratio for each video */
+  overflow: auto; /* Allows scrolling if more than 5 rows */
+}
+
+/* Maintain a 16:9 aspect ratio for the video */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+@media screen and (max-width: 768px) {
+  .video-grid {
+    grid-template-columns: 1fr; /* One column on mobile */
+    max-height: calc(56.25% * 10); /* Adjust for single column layout */
+  }
+}
+#video-upload-form {
+  width: 100%; /* Make the form take up the full width of the parent element */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  border: 1px solid #ccc; /* Border style from the age display box */
+  border-radius: 5px; /* Border radius from the age display box */
+  padding: 10px; /* Padding from the age display box */
+}
+
+#video-upload-form input,
+#video-upload-form textarea {
+  width: 100%; /* Make the input fields take up the full width of the form */
+  box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+.button-container {
+  display: flex;
+}
+.button-container button {
+  margin-right: 10px;
+}
+#Details .tabcontent {
+  position: relative; /* Ensure the position of the apply button is relative to this element */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+#Details {
+  text-align: center;
+}
+#Details .editable {
+  margin: auto;
+  display: block;
+  width: 75%; /* or any other percentage or fixed width */
+}
+
+#About .editable textarea {
+  font-family: 'Roboto', sans-serif;
+  height: auto;
+  margin-left: 0 !important; /* Force no left margin */
+  padding-left: 0 !important; /* Force no left padding */
+  padding: 6px 12px;
+  user-select: text;
+  display: block;
+  position: relative;
+  background-color: white;
+  padding: 10px;
+  border-radius: 15px;
+  max-width: none;
+  width: 100%;
+  word-wrap: break-word;
+  min-height: 50px;
+  z-index: 1;
+  margin-left: 0; /* Reset left margin */
+  padding-left: 0;
+  text-align: left;
+  border: none; /* Remove border */
+  resize: none; /* Disable resizing */
+  
+}
+
+#About .editable {
+  margin: auto;
+  display: block;
+  width: 75%; /* or any other percentage or fixed width */
+  overflow: auto;
+}
+#user-birthday, #user-age {
+  text-align: center;
+}
+
+.image-item img {
+  width: 100%;
+  height: 150px; /* Set a fixed height for the images */
+  object-fit: cover;
+}
+
+#details-apply-button {
+
+  display: none; /* Make the button a block element */
+  margin-top: 10px;
+}
+#user-details:focus {
+  outline: none;
+}
+@media screen and (max-width: 768px) {
+  .youtube-container {
+    grid-template-columns: 1fr; /* Make the grid have one column on mobile */
+  }
+  .youtube-video {
+    flex: 0 0 100%; /* Make the videos take up the full width of the grid on mobile */
+  }
+  .user-bio {
+    display: none; /* Hide the bio on mobile devices */
+  }
+  
+}
+.user-profile-section {
+  position: relative;
+  text-align: center;
+}
+.profile-tab-spacer {
+  height: 70px; /* Adjust the height as needed to create space */
+}
+.editable-section {
+  display: none; /* Use flexbox to align items */
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  margin-bottom: 10px; /* Add some space between the sections */
+}
+.editable-section label,
+.editable-section input {
+  margin: 0 5px; /* Add some space around the label and input */
+}
+.editable-section input[type="date"] {
+  max-width: 200px; /* Adjust the width as needed */
+}
+.editable-section input {
+  text-align: center;
+}
+.editing .editable-section {
+  display: block; /* Show when in edit mode */
+}
+.upload-bg-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.edit-image-button {
+  position: absolute;
+  bottom: 25px; /* Adjust as needed */
+  right: 35px; /* Adjust as needed */
+  width: 30px; /* Adjust as needed */
+  height: 30px; /* Adjust as needed */
+  cursor: pointer;
+  border-radius: 50%; /* Make it circular */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Optional: adds shadow for better visibility */
+}
+#image-upload-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px; /* Adjust the max-width as needed */
+  margin: auto;
+}
+
+#image-upload-form input,
+#image-upload-form textarea {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+.image-item img {
+  max-width: 100%; /* Ensure the image is not larger than its container */
+  height: auto;
+  
+  display: block; /* Images are inline by default, change to block to handle margins correctly */
+  margin: auto; /* Center the image */
+}
+input[type="text"] {
+  width: 100%; /* Full width of the parent container */
+  box-sizing: border-box; /* Include padding and borders in the width */
+  padding: 10px; /* Adjust padding as needed */
+  margin: 0; /* Remove any default margin */
+  border: 1px solid #ccc; /* Style the border as needed */
+  border-radius: 5px; /* Optional: round the corners of the input field */
+}
+@media screen and (max-width: 767px) {
+  .image-container {
+    display: block; /* Stack images vertically */
+    margin-bottom: 20px; /* Space between images */
+  }
+
+
+  #image-upload-form {
+    display: block; /* Stack form elements */
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
+  }
+
+  .admin-section {
+    padding-top: 60px;
+  }
+
+  #image-upload-form input[type="text"],
+  #image-upload-form textarea,
+  #image-upload-form input[type="file"] {
+    width: calc(100% - 20px); /* Full width minus padding */
+    margin: 10px; /* Add some space around the elements */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+  }
+
+  #image-upload-form button {
+    width: auto; /* Auto width for buttons */
+    margin-top: 25px; /* Add some space around the buttons */
+    margin-bottom: 10px; /* Add some space around the buttons */
+
+  }
+
+  #image-upload-form button[type="submit"] {
+    float: left; /* Align 'Upload Image' button to the left */
+  }
+  #images-apply-button {
+    float: right; /* Align 'Aplicar' button to the right */
+  }
+}
+@media screen and (max-width: 768px) {
+  .youtube-container {
+    grid-template-columns: 1fr; /* Make the grid have one column on mobile */
+  }
+  .youtube-video {
+    flex: 0 0 100%; /* Make the videos take up the full width of the grid on mobile */
+  }
+  #video-upload-form {
+    width: 100%; /* Make the form take up the full width of the parent element */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    border: 1px solid #ccc; /* Border style from the age display box */
+    border-radius: 5px; /* Border radius from the age display box */
+    padding: 10px; /* Padding from the age display box */
+  }
+  #video-upload-form input,
+  #video-upload-form textarea {
+    width: 100%; /* Make the input fields take up the full width of the form */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between; /* Space out buttons to each end */
+    margin-top: 10px; /* Add some space above the button container */
+  }
+  #video-apply-button {
+    display: block; /* Show the button */
+    margin-right: 0; /* Reset right margin */
+  }
+  /* If there is any specific style for the 'Añadir video' button, add it here */
+  #add-video-button {
+    display: block; /* Show the button */
+    /* Add any additional styles if needed */
+  }
+}
+h3.biografia {
+  margin-bottom: 10px;
+  margin-left: 150px; /* Default margin for larger screens */
+}
+
+/* Media query for screens with a max width of 768px (e.g., tablets and mobile devices) */
+@media screen and (max-width: 768px) {
+  h3.biografia {
+    margin-left: 10px; /* Reduced margin for smaller screens */
+  }
+}
+  @media screen and (max-width: 768px) {
+.tabcontent {
+padding-bottom: 60px; /* Adjust the value as needed for spacing */
+}
+}
+#publicar-button {
+position: relative; /* z-index only works on positioned elements (position:absolute, position:relative, or position:fixed) */
+z-index: 10; /* Any value higher than the z-index values of the overlapping elements */
+
+}
+.edit-button {
+margin-right: 10px; /* Add space to the right of the pencil icon */
+}
+
+.share-button {
+margin-left: 10px; /* Add space to the left of the share icon */
+}

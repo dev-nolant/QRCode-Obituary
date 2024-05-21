@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      h2 {
+        color: #7092BE;
+      }
+      .container {
+        width: 90%;
+        margin: auto;
+      }
+      .admin-section {
+        background: #f4f4f4;
+        margin-bottom: 20px;
+        padding: 20px;
+        border-radius: 5px;
+      }
+      label {
+        display: block;
+        margin: 10px 0;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+      }
+      button {
+        padding: 10px 20px;
+        background: #333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #7092BE ;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form class="admin-section" id="admin-section" method="POST">
+        <h2>Menú de Administrador</h2>
+
+        <button type="submit">Crear QR</button>
+      </form>
+      {% if password %}
+      <div class="admin-section">
+        <h2>Generado Usuario Contraseña</h2>
+        <p>{{ password }}</p>
+      </div>
+      {% endif %}
+      {% if qr_code_path %}
+      <div class="admin-section">
+        <h2>Generado QR Código</h2>
+        <img src="{{ qr_code_path }}" alt="QR Code">
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
