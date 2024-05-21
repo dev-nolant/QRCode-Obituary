@@ -104,7 +104,7 @@ Feel free to fork this project and submit pull requests. For major changes, plea
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the Creative Commons Zero v1.0 Universal License.
 
 ---
 
