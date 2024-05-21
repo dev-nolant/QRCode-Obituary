@@ -59,12 +59,12 @@ Welcome to the User Management Platform! This project provides a web-based inter
 
 5. **Set up the database:**
 
-    Configure your database URI in the `app.config['SQLALCHEMY_DATABASE_URI']` line in `app.py`.
+    Configure your database URI in the `app.config['SQLALCHEMY_DATABASE_URI']` line in `_server.py`.
 
 6. **Run the application:**
 
     ```bash
-    python app.py
+    python _server.py
     ```
 
     The application will be available at `http://127.0.0.1:5000/`.
