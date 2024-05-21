@@ -98,12 +98,6 @@ Welcome to the User Management Platform! This project provides a web-based inter
 - **GET /login**: Admin login.
 - **POST /admin**: Admin dashboard.
 
-## 🖼️ Screenshots
-
-![Home Page](static/homepage.png)
-![User Profile](static/userprofile.png)
-![Admin Dashboard](static/admindashboard.png)
-
 ## 💡 Contributing
 
 Feel free to fork this project and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
