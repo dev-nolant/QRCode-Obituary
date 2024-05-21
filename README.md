@@ -31,8 +31,8 @@ Welcome to the User Management Platform! This project provides a web-based inter
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/yourusername/user-management-platform.git
-    cd user-management-platform
+    git clone https://github.com/dev-nolant/QRCode-Obituary-Fullstack.git
+    cd QRCode-Obituary-Fullstack
     ```
 
 2. **Create and activate a virtual environment:**
