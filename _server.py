@@ -37,7 +37,7 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB
 
 
 db = SQLAlchemy(app)
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 photos = UploadSet('photos', IMAGES)
 
 configure_uploads(app, (photos))
