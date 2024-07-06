@@ -29,7 +29,7 @@ load_dotenv()
 
 
 app = Flask(__name__, static_folder='static')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://database234_user:bUfLXGSoDXE2BoAyTpMnccrxHSUJEuhQ@dpg-cm14p6mn7f5s73e49qu0-a.oregon-postgres.render.com/database234'
+app.config['SQLALCHEMY_DATABASE_URI'] = ''
 app.config['UPLOADED_PHOTOS_DEST'] = 'static/'
 app.secret_key = os.getenv('SECRET_KEY')
 app.config['UPLOADED_VIDEOS_DEST'] = 'static/videos'
