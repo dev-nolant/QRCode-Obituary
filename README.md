@@ -1,6 +1,6 @@
 # 🌟 User Management Platform - Memorial/Obituary
 
-Welcome to the User Management Platform! This project provides a web-based interface to manage user profiles, including their personal details, profile images, background images, and associated videos. This site was intended as an obituary site related to QR codes.
+Welcome to the Memorial/Obituary Management Platform! This project provides a web-based interface to manage user profiles, including their personal details, profile images, background images, and associated videos. This site was intended as an obituary site related to QR codes.
 
 ## 🚀 Features
 
